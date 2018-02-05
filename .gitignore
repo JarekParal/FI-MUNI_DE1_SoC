@@ -1,0 +1,6 @@
+db
+incremental_db
+devplatforms
+output_files
+*.bak
+*.txt
