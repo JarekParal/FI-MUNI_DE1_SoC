@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pin_planner>
+	<pin_info>
+		<pin name="CLOCK2_50" source="Pin Planner" >
+		</pin>
+		<pin name="KEY[0]" source="Pin Planner" >
+		</pin>
+		<pin name="LEDR[0]" source="Pin Planner" >
+		</pin>
+		<pin name="LEDR[1]" source="Pin Planner" >
+		</pin>
+		<pin name="LEDR[2]" source="Pin Planner" >
+		</pin>
+		<pin name="LEDR[3]" source="Pin Planner" >
+		</pin>
+		<pin name="LEDR[4]" source="Pin Planner" >
+		</pin>
+		<pin name="LEDR[5]" source="Pin Planner" >
+		</pin>
+		<pin name="LEDR[6]" source="Pin Planner" >
+		</pin>
+		<pin name="LEDR[7]" source="Pin Planner" >
+		</pin>
+		<pin name="PS2_CLK" source="Pin Planner" >
+		</pin>
+		<pin name="PS2_DAT" source="Pin Planner" >
+		</pin>
+	</pin_info>
+	<buses>
+	</buses>
+	<group_file_association>
+	</group_file_association>
+	<pin_planner_file_specifies>
+	</pin_planner_file_specifies>
+</pin_planner>
