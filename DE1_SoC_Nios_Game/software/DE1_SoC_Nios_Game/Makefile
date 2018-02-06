@@ -142,8 +142,8 @@ ACDS_VERSION := 16.0
 ELF := DE1_SoC_Nios_Game.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := hello_world.c
-CXX_SRCS :=
+C_SRCS :=
+CXX_SRCS := main.cpp
 ASM_SRCS :=
 
 
