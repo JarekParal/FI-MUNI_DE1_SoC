@@ -660,7 +660,7 @@ CC := $(CROSS_COMPILE)gcc -xc
 endif
 
 ifeq ($(origin CXX),default)
-CXX := $(CROSS_COMPILE)gcc -xc++
+CXX := $(CROSS_COMPILE)gcc -xc++ -std=c++11
 endif
 
 ifeq ($(origin AS),default)

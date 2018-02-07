@@ -31,10 +31,11 @@
 int main()
 {
 	printf("===== Hello world =====\r\n");
-	std::vector<int> vec;
-	vec.push_back(1);
+	std::vector<int> vec{1,2,4,8,16,32};
 	std::cout << "hello " << vec[0]  << std::endl;
-
+	for(int i : vec) {
+		std::cout << i << std::endl;
+	}
 
 	return 0;
 }

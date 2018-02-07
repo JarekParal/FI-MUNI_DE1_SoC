@@ -4,27 +4,29 @@
 
 `timescale 1 ps / 1 ps
 module DE1_SoC_QSYS (
-		input  wire        clk_clk,                        //                     clk.clk
-		output wire        clk_sdram_clk,                  //               clk_sdram.clk
-		input  wire [3:0]  key_external_connection_export, // key_external_connection.export
-		output wire        pll_locked_export,              //              pll_locked.export
-		input  wire        reset_reset_n,                  //                   reset.reset_n
-		output wire [12:0] sdram_wire_addr,                //              sdram_wire.addr
-		output wire [1:0]  sdram_wire_ba,                  //                        .ba
-		output wire        sdram_wire_cas_n,               //                        .cas_n
-		output wire        sdram_wire_cke,                 //                        .cke
-		output wire        sdram_wire_cs_n,                //                        .cs_n
-		inout  wire [15:0] sdram_wire_dq,                  //                        .dq
-		output wire [1:0]  sdram_wire_dqm,                 //                        .dqm
-		output wire        sdram_wire_ras_n,               //                        .ras_n
-		output wire        sdram_wire_we_n                 //                        .we_n
+		input  wire        clk_clk,                        //                      clk.clk
+		output wire        clk_sdram_clk,                  //                clk_sdram.clk
+		input  wire [3:0]  key_external_connection_export, //  key_external_connection.export
+		output wire        pll_locked_export,              //               pll_locked.export
+		inout  wire        ps2_0_external_interface_CLK,   // ps2_0_external_interface.CLK
+		inout  wire        ps2_0_external_interface_DAT,   //                         .DAT
+		input  wire        reset_reset_n,                  //                    reset.reset_n
+		output wire [12:0] sdram_wire_addr,                //               sdram_wire.addr
+		output wire [1:0]  sdram_wire_ba,                  //                         .ba
+		output wire        sdram_wire_cas_n,               //                         .cas_n
+		output wire        sdram_wire_cke,                 //                         .cke
+		output wire        sdram_wire_cs_n,                //                         .cs_n
+		inout  wire [15:0] sdram_wire_dq,                  //                         .dq
+		output wire [1:0]  sdram_wire_dqm,                 //                         .dqm
+		output wire        sdram_wire_ras_n,               //                         .ras_n
+		output wire        sdram_wire_we_n                 //                         .we_n
 	);
 
-	wire         pll_outclk0_clk;                                            // pll:outclk_0 -> [irq_mapper:clk, jtag_uart:clk, key:clk, mm_interconnect_0:pll_outclk0_clk, nios2_gen2_0:clk, onchip_memory2:clk, rst_controller:clk, rst_controller_001:clk, sdram:clk, sysid_qsys:clock, timer:clk]
+	wire         pll_outclk0_clk;                                            // pll:outclk_0 -> [irq_mapper:clk, jtag_uart:clk, key:clk, mm_interconnect_0:pll_outclk0_clk, nios2_gen2_0:clk, onchip_memory2:clk, ps2_0:clk, rst_controller:clk, rst_controller_001:clk, sdram:clk, sysid_qsys:clock, timer:clk]
 	wire  [31:0] nios2_gen2_0_data_master_readdata;                          // mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
 	wire         nios2_gen2_0_data_master_waitrequest;                       // mm_interconnect_0:nios2_gen2_0_data_master_waitrequest -> nios2_gen2_0:d_waitrequest
 	wire         nios2_gen2_0_data_master_debugaccess;                       // nios2_gen2_0:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_0_data_master_debugaccess
-	wire  [26:0] nios2_gen2_0_data_master_address;                           // nios2_gen2_0:d_address -> mm_interconnect_0:nios2_gen2_0_data_master_address
+	wire  [27:0] nios2_gen2_0_data_master_address;                           // nios2_gen2_0:d_address -> mm_interconnect_0:nios2_gen2_0_data_master_address
 	wire   [3:0] nios2_gen2_0_data_master_byteenable;                        // nios2_gen2_0:d_byteenable -> mm_interconnect_0:nios2_gen2_0_data_master_byteenable
 	wire         nios2_gen2_0_data_master_read;                              // nios2_gen2_0:d_read -> mm_interconnect_0:nios2_gen2_0_data_master_read
 	wire         nios2_gen2_0_data_master_readdatavalid;                     // mm_interconnect_0:nios2_gen2_0_data_master_readdatavalid -> nios2_gen2_0:d_readdatavalid
@@ -32,7 +34,7 @@ module DE1_SoC_QSYS (
 	wire  [31:0] nios2_gen2_0_data_master_writedata;                         // nios2_gen2_0:d_writedata -> mm_interconnect_0:nios2_gen2_0_data_master_writedata
 	wire  [31:0] nios2_gen2_0_instruction_master_readdata;                   // mm_interconnect_0:nios2_gen2_0_instruction_master_readdata -> nios2_gen2_0:i_readdata
 	wire         nios2_gen2_0_instruction_master_waitrequest;                // mm_interconnect_0:nios2_gen2_0_instruction_master_waitrequest -> nios2_gen2_0:i_waitrequest
-	wire  [26:0] nios2_gen2_0_instruction_master_address;                    // nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
+	wire  [27:0] nios2_gen2_0_instruction_master_address;                    // nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
 	wire         nios2_gen2_0_instruction_master_read;                       // nios2_gen2_0:i_read -> mm_interconnect_0:nios2_gen2_0_instruction_master_read
 	wire         nios2_gen2_0_instruction_master_readdatavalid;              // mm_interconnect_0:nios2_gen2_0_instruction_master_readdatavalid -> nios2_gen2_0:i_readdatavalid
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect;   // mm_interconnect_0:jtag_uart_avalon_jtag_slave_chipselect -> jtag_uart:av_chipselect
@@ -42,6 +44,14 @@ module DE1_SoC_QSYS (
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_read;         // mm_interconnect_0:jtag_uart_avalon_jtag_slave_read -> jtag_uart:av_read_n
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_write;        // mm_interconnect_0:jtag_uart_avalon_jtag_slave_write -> jtag_uart:av_write_n
 	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata;    // mm_interconnect_0:jtag_uart_avalon_jtag_slave_writedata -> jtag_uart:av_writedata
+	wire         mm_interconnect_0_ps2_0_avalon_ps2_slave_chipselect;        // mm_interconnect_0:ps2_0_avalon_ps2_slave_chipselect -> ps2_0:chipselect
+	wire  [31:0] mm_interconnect_0_ps2_0_avalon_ps2_slave_readdata;          // ps2_0:readdata -> mm_interconnect_0:ps2_0_avalon_ps2_slave_readdata
+	wire         mm_interconnect_0_ps2_0_avalon_ps2_slave_waitrequest;       // ps2_0:waitrequest -> mm_interconnect_0:ps2_0_avalon_ps2_slave_waitrequest
+	wire   [0:0] mm_interconnect_0_ps2_0_avalon_ps2_slave_address;           // mm_interconnect_0:ps2_0_avalon_ps2_slave_address -> ps2_0:address
+	wire         mm_interconnect_0_ps2_0_avalon_ps2_slave_read;              // mm_interconnect_0:ps2_0_avalon_ps2_slave_read -> ps2_0:read
+	wire   [3:0] mm_interconnect_0_ps2_0_avalon_ps2_slave_byteenable;        // mm_interconnect_0:ps2_0_avalon_ps2_slave_byteenable -> ps2_0:byteenable
+	wire         mm_interconnect_0_ps2_0_avalon_ps2_slave_write;             // mm_interconnect_0:ps2_0_avalon_ps2_slave_write -> ps2_0:write
+	wire  [31:0] mm_interconnect_0_ps2_0_avalon_ps2_slave_writedata;         // mm_interconnect_0:ps2_0_avalon_ps2_slave_writedata -> ps2_0:writedata
 	wire  [31:0] mm_interconnect_0_sysid_qsys_control_slave_readdata;        // sysid_qsys:readdata -> mm_interconnect_0:sysid_qsys_control_slave_readdata
 	wire   [0:0] mm_interconnect_0_sysid_qsys_control_slave_address;         // mm_interconnect_0:sysid_qsys_control_slave_address -> sysid_qsys:address
 	wire  [31:0] mm_interconnect_0_nios2_gen2_0_debug_mem_slave_readdata;    // nios2_gen2_0:debug_mem_slave_readdata -> mm_interconnect_0:nios2_gen2_0_debug_mem_slave_readdata
@@ -78,11 +88,12 @@ module DE1_SoC_QSYS (
 	wire   [1:0] mm_interconnect_0_key_s1_address;                           // mm_interconnect_0:key_s1_address -> key:address
 	wire         mm_interconnect_0_key_s1_write;                             // mm_interconnect_0:key_s1_write -> key:write_n
 	wire  [31:0] mm_interconnect_0_key_s1_writedata;                         // mm_interconnect_0:key_s1_writedata -> key:writedata
-	wire         irq_mapper_receiver0_irq;                                   // jtag_uart:av_irq -> irq_mapper:receiver0_irq
-	wire         irq_mapper_receiver1_irq;                                   // timer:irq -> irq_mapper:receiver1_irq
-	wire         irq_mapper_receiver2_irq;                                   // key:irq -> irq_mapper:receiver2_irq
+	wire         irq_mapper_receiver0_irq;                                   // ps2_0:irq -> irq_mapper:receiver0_irq
+	wire         irq_mapper_receiver1_irq;                                   // jtag_uart:av_irq -> irq_mapper:receiver1_irq
+	wire         irq_mapper_receiver2_irq;                                   // timer:irq -> irq_mapper:receiver2_irq
+	wire         irq_mapper_receiver3_irq;                                   // key:irq -> irq_mapper:receiver3_irq
 	wire  [31:0] nios2_gen2_0_irq_irq;                                       // irq_mapper:sender_irq -> nios2_gen2_0:irq
-	wire         rst_controller_reset_out_reset;                             // rst_controller:reset_out -> [jtag_uart:rst_n, key:reset_n, mm_interconnect_0:jtag_uart_reset_reset_bridge_in_reset_reset, onchip_memory2:reset, rst_translator:in_reset, sdram:reset_n, sysid_qsys:reset_n, timer:reset_n]
+	wire         rst_controller_reset_out_reset;                             // rst_controller:reset_out -> [jtag_uart:rst_n, key:reset_n, mm_interconnect_0:jtag_uart_reset_reset_bridge_in_reset_reset, onchip_memory2:reset, ps2_0:reset, rst_translator:in_reset, sdram:reset_n, sysid_qsys:reset_n, timer:reset_n]
 	wire         rst_controller_reset_out_reset_req;                         // rst_controller:reset_req -> [onchip_memory2:reset_req, rst_translator:reset_req_in]
 	wire         rst_controller_001_reset_out_reset;                         // rst_controller_001:reset_out -> [irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n]
 	wire         rst_controller_001_reset_out_reset_req;                     // rst_controller_001:reset_req -> [nios2_gen2_0:reset_req, rst_translator_001:reset_req_in]
@@ -98,7 +109,7 @@ module DE1_SoC_QSYS (
 		.av_write_n     (~mm_interconnect_0_jtag_uart_avalon_jtag_slave_write),      //                  .write_n
 		.av_writedata   (mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest), //                  .waitrequest
-		.av_irq         (irq_mapper_receiver0_irq)                                   //               irq.irq
+		.av_irq         (irq_mapper_receiver1_irq)                                   //               irq.irq
 	);
 
 	DE1_SoC_QSYS_key key (
@@ -110,7 +121,7 @@ module DE1_SoC_QSYS (
 		.chipselect (mm_interconnect_0_key_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_key_s1_readdata),   //                    .readdata
 		.in_port    (key_external_connection_export),      // external_connection.export
-		.irq        (irq_mapper_receiver2_irq)             //                 irq.irq
+		.irq        (irq_mapper_receiver3_irq)             //                 irq.irq
 	);
 
 	DE1_SoC_QSYS_nios2_gen2_0 nios2_gen2_0 (
@@ -165,6 +176,22 @@ module DE1_SoC_QSYS (
 		.locked   (pll_locked_export)  //  locked.export
 	);
 
+	DE1_SoC_QSYS_ps2_0 ps2_0 (
+		.clk         (pll_outclk0_clk),                                      //                clk.clk
+		.reset       (rst_controller_reset_out_reset),                       //              reset.reset
+		.address     (mm_interconnect_0_ps2_0_avalon_ps2_slave_address),     //   avalon_ps2_slave.address
+		.chipselect  (mm_interconnect_0_ps2_0_avalon_ps2_slave_chipselect),  //                   .chipselect
+		.byteenable  (mm_interconnect_0_ps2_0_avalon_ps2_slave_byteenable),  //                   .byteenable
+		.read        (mm_interconnect_0_ps2_0_avalon_ps2_slave_read),        //                   .read
+		.write       (mm_interconnect_0_ps2_0_avalon_ps2_slave_write),       //                   .write
+		.writedata   (mm_interconnect_0_ps2_0_avalon_ps2_slave_writedata),   //                   .writedata
+		.readdata    (mm_interconnect_0_ps2_0_avalon_ps2_slave_readdata),    //                   .readdata
+		.waitrequest (mm_interconnect_0_ps2_0_avalon_ps2_slave_waitrequest), //                   .waitrequest
+		.irq         (irq_mapper_receiver0_irq),                             //          interrupt.irq
+		.PS2_CLK     (ps2_0_external_interface_CLK),                         // external_interface.export
+		.PS2_DAT     (ps2_0_external_interface_DAT)                          //                   .export
+	);
+
 	DE1_SoC_QSYS_sdram sdram (
 		.clk            (pll_outclk0_clk),                          //   clk.clk
 		.reset_n        (~rst_controller_reset_out_reset),          // reset.reset_n
@@ -203,7 +230,7 @@ module DE1_SoC_QSYS (
 		.readdata   (mm_interconnect_0_timer_s1_readdata),   //      .readdata
 		.chipselect (mm_interconnect_0_timer_s1_chipselect), //      .chipselect
 		.write_n    (~mm_interconnect_0_timer_s1_write),     //      .write_n
-		.irq        (irq_mapper_receiver1_irq)               //   irq.irq
+		.irq        (irq_mapper_receiver2_irq)               //   irq.irq
 	);
 
 	DE1_SoC_QSYS_mm_interconnect_0 mm_interconnect_0 (
@@ -251,6 +278,14 @@ module DE1_SoC_QSYS (
 		.onchip_memory2_s1_byteenable                   (mm_interconnect_0_onchip_memory2_s1_byteenable),             //                                         .byteenable
 		.onchip_memory2_s1_chipselect                   (mm_interconnect_0_onchip_memory2_s1_chipselect),             //                                         .chipselect
 		.onchip_memory2_s1_clken                        (mm_interconnect_0_onchip_memory2_s1_clken),                  //                                         .clken
+		.ps2_0_avalon_ps2_slave_address                 (mm_interconnect_0_ps2_0_avalon_ps2_slave_address),           //                   ps2_0_avalon_ps2_slave.address
+		.ps2_0_avalon_ps2_slave_write                   (mm_interconnect_0_ps2_0_avalon_ps2_slave_write),             //                                         .write
+		.ps2_0_avalon_ps2_slave_read                    (mm_interconnect_0_ps2_0_avalon_ps2_slave_read),              //                                         .read
+		.ps2_0_avalon_ps2_slave_readdata                (mm_interconnect_0_ps2_0_avalon_ps2_slave_readdata),          //                                         .readdata
+		.ps2_0_avalon_ps2_slave_writedata               (mm_interconnect_0_ps2_0_avalon_ps2_slave_writedata),         //                                         .writedata
+		.ps2_0_avalon_ps2_slave_byteenable              (mm_interconnect_0_ps2_0_avalon_ps2_slave_byteenable),        //                                         .byteenable
+		.ps2_0_avalon_ps2_slave_waitrequest             (mm_interconnect_0_ps2_0_avalon_ps2_slave_waitrequest),       //                                         .waitrequest
+		.ps2_0_avalon_ps2_slave_chipselect              (mm_interconnect_0_ps2_0_avalon_ps2_slave_chipselect),        //                                         .chipselect
 		.sdram_s1_address                               (mm_interconnect_0_sdram_s1_address),                         //                                 sdram_s1.address
 		.sdram_s1_write                                 (mm_interconnect_0_sdram_s1_write),                           //                                         .write
 		.sdram_s1_read                                  (mm_interconnect_0_sdram_s1_read),                            //                                         .read
@@ -275,6 +310,7 @@ module DE1_SoC_QSYS (
 		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
 		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
 		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
+		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
 		.sender_irq    (nios2_gen2_0_irq_irq)                //    sender.irq
 	);
 

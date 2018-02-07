@@ -13,7 +13,9 @@ module DE1_SoC_QSYS (
 	sdram_wire_dq,
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
-	sdram_wire_we_n);	
+	sdram_wire_we_n,
+	ps2_0_external_interface_CLK,
+	ps2_0_external_interface_DAT);	
 
 	input		clk_clk;
 	output		clk_sdram_clk;
@@ -29,4 +31,6 @@ module DE1_SoC_QSYS (
 	output	[1:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
+	inout		ps2_0_external_interface_CLK;
+	inout		ps2_0_external_interface_DAT;
 endmodule
