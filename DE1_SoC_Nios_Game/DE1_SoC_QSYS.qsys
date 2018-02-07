@@ -423,7 +423,7 @@
    version="16.0"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">DE1_SoC_QSYS_onchip_memory2</parameter>
+  <parameter name="autoInitializationFileName">$${FILENAME}_onchip_memory2</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -671,7 +671,7 @@
   <parameter name="casLatency" value="3" />
   <parameter name="clockRate" value="143000000" />
   <parameter name="columnWidth" value="10" />
-  <parameter name="componentName" value="DE1_SoC_QSYS_sdram" />
+  <parameter name="componentName" value="$${FILENAME}_sdram" />
   <parameter name="dataWidth" value="16" />
   <parameter name="generateSimulationModel" value="true" />
   <parameter name="initNOPDelay" value="0.0" />

@@ -346,6 +346,15 @@ hal_C_LIB_SRCS := \
 	$(hal_SRCS_ROOT)/src/alt_wait.c \
 	$(hal_SRCS_ROOT)/src/alt_write.c
 
+# up_avalon_ps2_driver sources root 
+up_avalon_ps2_driver_SRCS_ROOT := drivers
+
+# up_avalon_ps2_driver sources 
+up_avalon_ps2_driver_C_LIB_SRCS := \
+	$(up_avalon_ps2_driver_SRCS_ROOT)/src/altera_up_avalon_ps2.c \
+	$(up_avalon_ps2_driver_SRCS_ROOT)/src/altera_up_ps2_keyboard.c \
+	$(up_avalon_ps2_driver_SRCS_ROOT)/src/altera_up_ps2_mouse.c
+
 
 # Assemble all component C source files 
 COMPONENT_C_LIB_SRCS += \
@@ -353,7 +362,8 @@ COMPONENT_C_LIB_SRCS += \
 	$(altera_avalon_sysid_qsys_driver_C_LIB_SRCS) \
 	$(altera_avalon_timer_driver_C_LIB_SRCS) \
 	$(altera_nios2_gen2_hal_driver_C_LIB_SRCS) \
-	$(hal_C_LIB_SRCS)
+	$(hal_C_LIB_SRCS) \
+	$(up_avalon_ps2_driver_C_LIB_SRCS)
 
 # Assemble all component assembly source files 
 COMPONENT_ASM_LIB_SRCS += \

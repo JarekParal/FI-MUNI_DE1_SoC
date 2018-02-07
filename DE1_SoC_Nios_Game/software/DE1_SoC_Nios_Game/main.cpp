@@ -23,6 +23,9 @@
 #include <fcntl.h>
 //#include "debug.h"
 
+#include "altera_up_avalon_ps2.h"
+#include "altera_up_ps2_keyboard.h"
+
 #define DEBUG_DUMP  /*printf */
 
 #include <iostream>
@@ -36,6 +39,21 @@ int main()
 	for(int i : vec) {
 		std::cout << i << std::endl;
 	}
+
+	alt_up_ps2_dev *ps2;
+	ps2 = alt_up_ps2_open_dev("/dev/ps2_0");
+	//(*ps2).device_type = PS2_UNKNOWN;
+	alt_up_ps2_init(ps2);
+	printf("Detected device: %d\n",ps2->device_type);
+
+	if((*ps2).device_type == PS2_MOUSE)
+		std::cout << "PS2_MOUSE" << std::endl;
+	else if((*ps2).device_type == PS2_KEYBOARD)
+		std::cout << "PS2_KEYBOARD" << std::endl;
+	else if((*ps2).device_type == PS2_UNKNOWN)
+		std::cout << "PS2_UNKNOWN" << std::endl;
+	else
+		std::cout << "PS2 ERROR" << std::endl;
 
 	return 0;
 }

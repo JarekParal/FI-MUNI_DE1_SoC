@@ -4,6 +4,8 @@ module DE1_SoC_QSYS (
 	clk_sdram_clk,
 	key_external_connection_export,
 	pll_locked_export,
+	ps2_0_external_interface_CLK,
+	ps2_0_external_interface_DAT,
 	reset_reset_n,
 	sdram_wire_addr,
 	sdram_wire_ba,
@@ -13,14 +15,14 @@ module DE1_SoC_QSYS (
 	sdram_wire_dq,
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
-	sdram_wire_we_n,
-	ps2_0_external_interface_CLK,
-	ps2_0_external_interface_DAT);	
+	sdram_wire_we_n);	
 
 	input		clk_clk;
 	output		clk_sdram_clk;
 	input	[3:0]	key_external_connection_export;
 	output		pll_locked_export;
+	inout		ps2_0_external_interface_CLK;
+	inout		ps2_0_external_interface_DAT;
 	input		reset_reset_n;
 	output	[12:0]	sdram_wire_addr;
 	output	[1:0]	sdram_wire_ba;
@@ -31,6 +33,4 @@ module DE1_SoC_QSYS (
 	output	[1:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
-	inout		ps2_0_external_interface_CLK;
-	inout		ps2_0_external_interface_DAT;
 endmodule

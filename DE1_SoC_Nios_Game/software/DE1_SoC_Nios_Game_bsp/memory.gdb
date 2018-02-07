@@ -3,7 +3,7 @@
 # Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'DE1_SoC_QSYS'
 # SOPC Builder design path: ../../DE1_SoC_QSYS.sopcinfo
 #
-# Generated: Wed Feb 07 00:11:41 CET 2018
+# Generated: Wed Feb 07 01:33:33 CET 2018
 
 # DO NOT MODIFY THIS FILE
 #
@@ -47,7 +47,7 @@
 # by allowing GDB to cache memory contents on the host.
 
 # sdram
-memory 0x0 0x4000000 cache
+memory 0x4000000 0x8000000 cache
 
 # onchip_memory2
-memory 0x4080000 0x40ce200 cache
+memory 0x8080000 0x80ce200 cache

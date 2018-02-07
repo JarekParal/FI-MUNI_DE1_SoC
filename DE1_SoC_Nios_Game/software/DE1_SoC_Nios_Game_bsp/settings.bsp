@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>07-Feb-2018 00:11:39</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1517958699661</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>07-Feb-2018 11:03:22</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1517997802210</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>E:\pv200\DE1_SoC_Nios_Game\software\DE1_SoC_Nios_Game_bsp</BspGeneratedLocation>
-        <BspSettingsFile>.\settings.bsp</BspSettingsFile>
+        <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\DE1_SoC_QSYS.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_gen2_0</Cpu>
@@ -900,37 +900,43 @@
         </Setting>
         <MemoryMap>
                 <slaveDescriptor>sdram</slaveDescriptor>
-                <addressRange>0x00000000 - 0x03FFFFFF</addressRange>
+                <addressRange>0x04000000 - 0x07FFFFFF</addressRange>
                 <addressSpan>67108864</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>onchip_memory2</slaveDescriptor>
-                <addressRange>0x04080000 - 0x040CE1FF</addressRange>
+                <addressRange>0x08080000 - 0x080CE1FF</addressRange>
                 <addressSpan>320000</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>timer</slaveDescriptor>
-                <addressRange>0x04101000 - 0x0410101F</addressRange>
+                <addressRange>0x08101000 - 0x0810101F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>key</slaveDescriptor>
-                <addressRange>0x04101020 - 0x0410102F</addressRange>
+                <addressRange>0x08101020 - 0x0810102F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>ps2_0</slaveDescriptor>
+                <addressRange>0x08101030 - 0x08101037</addressRange>
+                <addressSpan>8</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>sysid_qsys</slaveDescriptor>
-                <addressRange>0x04101030 - 0x04101037</addressRange>
+                <addressRange>0x08101038 - 0x0810103F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart</slaveDescriptor>
-                <addressRange>0x04101038 - 0x0410103F</addressRange>
+                <addressRange>0x08101040 - 0x08101047</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
