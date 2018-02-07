@@ -28,6 +28,7 @@
 #include "altera_up_avalon_ps2.h"
 #include "altera_up_ps2_keyboard.h"
 
+#include "altera_up_avalon_video_character_buffer_with_dma.h"
 
 #define DEBUG_DUMP  /*printf */
 
@@ -37,7 +38,7 @@
 KB_CODE_TYPE *decode_mode;
 alt_u8 buf;
 char ascii;
-
+int result = -1;
 int main()
 {
 	printf("===== Hello world =====\r\n");
@@ -65,9 +66,26 @@ int main()
 	alt_u8 Status,ButtonStatus;
 	const alt_u8 ButtonMask = 0x0F; // 4 button
 
+	alt_up_char_buffer_dev* char_buf;
+	char_buf = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma_0");
+	if(char_buf == NULL) {
+		std::cout << "NULL" << std::endl;
+	} else {
+		std::cout << "NOT NULL" << std::endl;
+		std::cout << "x_resolution: " << (char_buf)->x_resolution << std::endl;
+		std::cout << "y_resolution: " << (char_buf)->y_resolution << std::endl;
+		std::cout << "NOT NULL" << std::endl;
+	}
+
+	result = alt_up_char_buffer_clear(char_buf);
+	std::cout << "char_buf: " << result << std::endl;
+
+	result = alt_up_char_buffer_draw(char_buf, 'A', 0, 0);
+	std::cout << "char_buf: " << result << std::endl;
+
 	while (1)
     {
-        usleep(1000*100);
+        usleep(1000*1000);
 //		decode_scancode(ps2,decode_mode,static_cast<alt_u8 *>(&buf),&ascii);
 //        if (*decode_mode != 6)
 //            printf("Decode mode: %d Buffer: 0x%X ASCII: %c\n",*decode_mode,buf,ascii);
