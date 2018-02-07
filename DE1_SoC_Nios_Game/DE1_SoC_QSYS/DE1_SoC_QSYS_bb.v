@@ -15,7 +15,16 @@ module DE1_SoC_QSYS (
 	sdram_wire_dq,
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
-	sdram_wire_we_n);	
+	sdram_wire_we_n,
+	video_vga_controller_0_external_interface_CLK,
+	video_vga_controller_0_external_interface_HS,
+	video_vga_controller_0_external_interface_VS,
+	video_vga_controller_0_external_interface_BLANK,
+	video_vga_controller_0_external_interface_SYNC,
+	video_vga_controller_0_external_interface_R,
+	video_vga_controller_0_external_interface_G,
+	video_vga_controller_0_external_interface_B,
+	pll_25mhz_locked_export);	
 
 	input		clk_clk;
 	output		clk_sdram_clk;
@@ -33,4 +42,13 @@ module DE1_SoC_QSYS (
 	output	[1:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
+	output		video_vga_controller_0_external_interface_CLK;
+	output		video_vga_controller_0_external_interface_HS;
+	output		video_vga_controller_0_external_interface_VS;
+	output		video_vga_controller_0_external_interface_BLANK;
+	output		video_vga_controller_0_external_interface_SYNC;
+	output	[7:0]	video_vga_controller_0_external_interface_R;
+	output	[7:0]	video_vga_controller_0_external_interface_G;
+	output	[7:0]	video_vga_controller_0_external_interface_B;
+	output		pll_25mhz_locked_export;
 endmodule
