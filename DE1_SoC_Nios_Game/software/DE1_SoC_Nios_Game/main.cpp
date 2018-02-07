@@ -23,13 +23,20 @@
 #include <fcntl.h>
 //#include "debug.h"
 
+
+
 #include "altera_up_avalon_ps2.h"
 #include "altera_up_ps2_keyboard.h"
+
 
 #define DEBUG_DUMP  /*printf */
 
 #include <iostream>
 #include <vector>
+
+KB_CODE_TYPE *decode_mode;
+alt_u8 buf;
+char ascii;
 
 int main()
 {
@@ -54,6 +61,26 @@ int main()
 		std::cout << "PS2_UNKNOWN" << std::endl;
 	else
 		std::cout << "PS2 ERROR" << std::endl;
+
+	alt_u8 Status,ButtonStatus;
+	const alt_u8 ButtonMask = 0x0F; // 4 button
+
+	while (1)
+    {
+        usleep(1000*100);
+//		decode_scancode(ps2,decode_mode,static_cast<alt_u8 *>(&buf),&ascii);
+//        if (*decode_mode != 6)
+//            printf("Decode mode: %d Buffer: 0x%X ASCII: %c\n",*decode_mode,buf,ascii);
+
+        ButtonStatus = IORD(KEY_BASE, 0);
+        if ((ButtonStatus & 0x01) == 0x00){
+        	std::cout << "KEY1 is pressed" << std::endl;
+        } else {
+        	std::cout << "KEY1 is not pressed" << std::endl;
+
+        }
+
+    }
 
 	return 0;
 }

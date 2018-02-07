@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>07-Feb-2018 11:03:22</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1517997802210</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>07-Feb-2018 13:58:49</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1518008329618</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>E:\pv200\DE1_SoC_Nios_Game\software\DE1_SoC_Nios_Game_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\DE1_SoC_QSYS.sopcinfo</SopcDesignFile>
